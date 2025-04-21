@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: multi-host-ingress
 spec:
+  ingressClassName: nginx
   rules:
     - host: megzapp.zapto.org
       http:
