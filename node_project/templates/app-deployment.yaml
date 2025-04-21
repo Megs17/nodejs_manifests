@@ -19,4 +19,4 @@ spec:
         - containerPort: {{ .Values.app.port }}
         envFrom:
         - secretRef:
-            name: app-secrets
+            name: aws-secrets-extracted

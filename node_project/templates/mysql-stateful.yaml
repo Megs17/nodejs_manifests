@@ -22,7 +22,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: app-secrets
+              name: aws-secrets-extracted
               key: RDS_PASSWORD
         volumeMounts:
         - name: mysql-temp-storage
