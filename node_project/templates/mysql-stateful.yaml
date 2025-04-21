@@ -27,6 +27,6 @@ spec:
         volumeMounts:
         - name: mysql-temp-storage
           mountPath: /var/lib/mysql
-    volumes:
-      - name: mysql-temp-storage
-        emptyDir: {}
+      volumes:
+        - name: mysql-temp-storage
+          emptyDir: {}
