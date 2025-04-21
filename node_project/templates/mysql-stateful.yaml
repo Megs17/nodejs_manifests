@@ -25,13 +25,8 @@ spec:
               name: app-secrets
               key: RDS_PASSWORD
         volumeMounts:
-        - name: mysql-pvc
+        - name: mysql-temp-storage
           mountPath: /var/lib/mysql
-  volumeClaimTemplates:
-  - metadata:
-      name: mysql-pvc
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      resources:
-        requests:
-          storage: {{ .Values.mysql.storage }}
+    volumes:
+      - name: mysql-temp-storage
+        emptyDir: {}
