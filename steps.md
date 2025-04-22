@@ -36,3 +36,18 @@ helm install external-secrets external-secrets/external-secrets
 kubectl get pod -w
  ## you can add secretstore and externalsecret to yaml files of helm 
  ## i work on gce so secret_store need aws credentials 
+
+##install:
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+helm install ingress-nginx ingress-nginx/ingress-nginx \
+  --namespace ingress-nginx \
+  --create-namespace \
+  --set controller.service.type=LoadBalancer
+kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
+helm repo add external-secrets https://charts.external-secrets.io
+
+helm repo update
+
+helm install external-secrets external-secrets/external-secrets
+kubectl get svc -n ingress-nginx ingress-nginx-controller
