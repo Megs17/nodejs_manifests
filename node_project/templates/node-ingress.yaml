@@ -9,7 +9,7 @@ spec:
   tls:
     - hosts:
         - megzapp.zapto.org
-      secretName: myapp-tls
+      secretName: myapp-tls  ### wil be created with this name
   rules:
     - host: megzapp.zapto.org
       http:
