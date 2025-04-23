@@ -8,10 +8,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - megzapp.zapto.org
+        - itiproject.zapto.org
       secretName: myapp-tls  ### wil be created with this name
   rules:
-    - host: megzapp.zapto.org
+    - host: itiproject.zapto.org
       http:
         paths:
           - path: /
