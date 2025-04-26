@@ -9,7 +9,7 @@ spec:
   tls:
     - hosts:
         - itiproject.zapto.org
-      secretName: myapp-tls  ### wil be created with this name
+      secretName: myapp-tls  
   rules:
     - host: itiproject.zapto.org
       http:
@@ -21,13 +21,4 @@ spec:
                 name: node-app
                 port:
                   number: 80
-    # - host: jenkins.dev.local
-    #   http:
-    #     paths:
-    #       - path: /
-    #         pathType: Prefix
-    #         backend:
-    #           service:
-    #             name: jenkins-service
-    #             port:
-    #               number: 80
+ 

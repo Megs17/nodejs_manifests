@@ -40,10 +40,10 @@ kubectl get pod -w
 ##install:
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
-helm install ingress-nginx ingress-nginx/ingress-nginx \
-  --namespace ingress-nginx \
-  --create-namespace \
-  --set controller.service.type=LoadBalancer
+  helm install ingress-nginx ingress-nginx/ingress-nginx \
+    --namespace ingress-nginx \
+    --create-namespace \
+    --set controller.service.type=LoadBalancer
 kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
 helm repo add external-secrets https://charts.external-secrets.io
 
@@ -51,3 +51,11 @@ helm repo update
 
 helm install external-secrets external-secrets/external-secrets
 kubectl get svc -n ingress-nginx ingress-nginx-controller
+
+kubectl annotate serviceaccount external-secrets-sa \
+  eks.amazonaws.com/role-arn=arn:aws:iam::559050206265:role/secrets-manager \
+  -n default
+
+
+  # ==================================================
+  kubectl get sa external-secrets-sa -n external-secrets -o yaml | sed 's/namespace: external-secrets/default/' | kubectl apply -f 
