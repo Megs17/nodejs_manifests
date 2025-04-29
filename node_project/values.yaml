@@ -4,7 +4,6 @@ app:
   nodePort: 30080
 
 mysql:
-  rootPassword: example
   storage: 1Gi
 
 redis:
